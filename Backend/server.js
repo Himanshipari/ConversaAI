@@ -94,45 +94,64 @@
 
 
 
+// import express from "express";
+// import path from "path";
+// import { fileURLToPath } from "url";
+// import "dotenv/config";
+// import cors from "cors";
+// import mongoose from "mongoose";
+// import chatRoutes from "./routes/chat.js";
+
+// const app = express();
+
+// // ✅ FIX 1: use Render port
+// const PORT = process.env.PORT || 8080;
+
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+
+// app.use(express.json());
+// app.use(cors());
+
+// app.use("/api", chatRoutes);
+
+// app.use(express.static(path.join(__dirname, "../Frontend/dist")));
+
+// app.get("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
+// });
+
+// // ✅ FIX 2: define function BEFORE using it
+// const connectDB = async () => {
+//   try {
+//     await mongoose.connect(process.env.MONGODB_URI);
+//     console.log("Connected with Database!");
+//   } catch (err) {
+//     console.log("Failed to connect with Db", err);
+//   }
+// };
+
+// // start server
+// app.listen(PORT, async () => {
+//   console.log(`server running on ${PORT}`);
+//   await connectDB();
+// });
+
+
+
+
+
+
 import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
-import "dotenv/config";
-import cors from "cors";
-import mongoose from "mongoose";
-import chatRoutes from "./routes/chat.js";
 
 const app = express();
 
-// ✅ FIX 1: use Render port
 const PORT = process.env.PORT || 8080;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-app.use(express.json());
-app.use(cors());
-
-app.use("/api", chatRoutes);
-
-app.use(express.static(path.join(__dirname, "../Frontend/dist")));
-
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
+app.get("/", (req, res) => {
+  res.send("Server is working");
 });
 
-// ✅ FIX 2: define function BEFORE using it
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log("Connected with Database!");
-  } catch (err) {
-    console.log("Failed to connect with Db", err);
-  }
-};
-
-// start server
-app.listen(PORT, async () => {
-  console.log(`server running on ${PORT}`);
-  await connectDB();
+app.listen(PORT, () => {
+  console.log("Server started on", PORT);
 });
