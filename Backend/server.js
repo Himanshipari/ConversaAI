@@ -183,7 +183,8 @@ app.use("/api", chatRoutes);
 const distPath = path.join(__dirname, "../Frontend/dist");
 app.use(express.static(distPath));
 
-app.get("/*", (req, res) => {
+// SPA fallback (SAFE for all Express versions)
+app.use((req, res) => {
   res.sendFile(path.join(distPath, "index.html"));
 });
 
