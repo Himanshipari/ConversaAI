@@ -1,4 +1,10 @@
 import express from "express";
+
+
+import path from "path";
+import { fileURLToPath } from "url";
+
+
 import "dotenv/config";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -7,10 +13,30 @@ import chatRoutes from "./routes/chat.js";
 const app = express(); 
 const PORT = 8080;
 
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
+
+
 app.use(express.json());//use for parse incoming request ye 2 line frontend ke saath backend ko use krege
 app.use(cors());
 
 app.use("/api", chatRoutes);
+
+
+
+app.use(express.static(path.join(__dirname, "../Frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
+});
+
+
+
+
 
 app.listen(PORT, () => {
   console.log(`server running on ${PORT}`);
