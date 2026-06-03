@@ -210,7 +210,7 @@ Computer Science Engineering Student | Full Stack Developer | AI Enthusiast
 
 🔗 GitHub: https://github.com/Himanshipari
 
-🔗 LinkedIn: Add Your LinkedIn Profile
+🔗 LinkedIn: https://www.linkedin.com/in/himanshiparihar/
 
 ---
 
