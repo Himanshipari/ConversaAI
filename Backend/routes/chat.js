@@ -1,11 +1,13 @@
 import express from "express";
 import Thread from "../models/Thread.js";
 import getOpenAIAPIResponse from "../utils/openai.js";
+import authMiddleware from "../utils/authMiddleware.js";
+
 
 const router = express.Router();
 
 //test:we are just testing to see its work or not
-router.post("/test", async(req,res) => {
+router.post("/test",authMiddleware, async(req,res) => {
     try{
         const thread = new Thread({
             threadId: "abc",
@@ -21,7 +23,7 @@ router.post("/test", async(req,res) => {
 });
 
 //Get all threads   
-router.get("/thread", async(req, res)=>{
+router.get("/thread", authMiddleware, async(req, res)=>{
     try{
         const threads = await Thread.find({}).sort({updatedAt:-1});
         //descending order of updatedAt...most recent data on top
@@ -33,7 +35,7 @@ router.get("/thread", async(req, res)=>{
 });
 
 //particular thread ke mssg ke liye cretae kiya tha
-router.get("/thread/:threadId", async(req,res)=>{
+router.get("/thread/:threadId", authMiddleware, async(req,res)=>{
     const {threadId} = req.params;
     try{
         const thread = await Thread.findOne({threadId});
@@ -50,7 +52,7 @@ router.get("/thread/:threadId", async(req,res)=>{
 });
 
 //particular thread ko delete krne ke liye create kiya
-router.delete("/thread/:threadId", async(req,res)=>{
+router.delete("/thread/:threadId", authMiddleware, async(req,res)=>{
     const {threadId} = req.params;
 
     try{
@@ -67,7 +69,7 @@ router.delete("/thread/:threadId", async(req,res)=>{
 });
 
 //IMP: create a new with mssg+reply we created this
-router.post("/chat", async(req,res)=>{
+router.post("/chat", authMiddleware, async(req,res)=>{
     const {threadId, message} = req.body;
 
     if(!threadId || !message){

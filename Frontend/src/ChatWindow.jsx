@@ -7,33 +7,38 @@ import {ScaleLoader} from "react-spinners";
 function ChatWindow(){
     const {prompt, setPrompt, reply, setReply, currThreadId, prevChats, setPrevChats, setNewChat} = useContext(MyContext);
     const [loading, setLoading] = useState(false);
-    const [isOpen, setIsOpen] = useState(false); //set default false value 
+    const [isOpen, setIsOpen] = useState(false); 
 
-    const getReply = async () =>{
+    const getReply = async () => {
         setLoading(true);
         setNewChat(false);
-        console.log("message" , prompt, "threadId", currThreadId);
+        console.log("message", prompt, "threadId", currThreadId);
+
+        const token = localStorage.getItem("token");
+
         const options = {
             method: "POST",
-            headers:{
-                "Content-Type": "application/json"
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}` 
             },
             body: JSON.stringify({
-                message:prompt,
+                message: prompt,
                 threadId: currThreadId
             })
         };
-        try{
+
+        try {
             const response = await fetch("http://localhost:8080/api/chat", options);
             const res = await response.json();
             console.log(res);
-            setReply(res.reply); 
-        }catch(err){
+            setReply(res.reply);
+        } catch (err) {
             console.log(err);
         }
-        setLoading(false);
-    }
-    //Append new chat to prevChats
+        setLoading(false); 
+    };
+
     useEffect(()=>{
         if(prompt && reply){
             setPrevChats(prevChats=>{
@@ -53,22 +58,33 @@ function ChatWindow(){
         setIsOpen(!isOpen);
     }
 
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.location.reload();
+    };
+
     return(
         <div className="chatWindow">
             <div className="navbar">
                 <span>ConversaAI <i className="fa-solid fa-chevron-down"></i></span>
                 <div className="userIconDiv" onClick={handleProfileClick}>
-                <span className="userIcon"><i className="fa-solid fa-user"></i></span>
+                    <span className="userIcon"><i className="fa-solid fa-user"></i></span>
                 </div>
             </div>
 
             {
                 isOpen &&
                 <div className="dropDown">
-                    <div className="dropDownItem"><i class="fa-solid fa-gear"></i>Settings</div>
-                    <div className="dropDownItem"><i class="fa-solid fa-cloud-arrow-up"></i>Upgrade plan</div>
-                    <div className="dropDownItem"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</div>
+                    <div className="dropDownItem"><i className="fa-solid fa-gear"></i>Settings</div>
+                    <div className="dropDownItem"><i className="fa-solid fa-cloud-arrow-up"></i>Upgrade plan</div>
+                    
+                   
+                    <div className="dropDownItem" onClick={handleLogout} style={{ cursor: 'pointer' }}>
+                        <i className="fa-solid fa-arrow-right-from-bracket"></i>Logout
                     </div>
+                </div>
             }
             <Chat></Chat>
 
