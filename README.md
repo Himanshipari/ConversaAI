@@ -4,6 +4,10 @@
 
 ### AI-Powered Conversational Chat Application
 
+🌐 Live Demo
+
+🔗 https://conversaai-vymt.onrender.com
+
 ConversaAI is a full-stack AI chatbot application that enables users to interact with an intelligent assistant through a modern and responsive chat interface. Built using React, Node.js, Express, MongoDB, and OpenAI APIs, the platform delivers fast and context-aware AI-generated responses.
 
 </div>
