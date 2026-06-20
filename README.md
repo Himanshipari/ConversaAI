@@ -167,16 +167,19 @@ OPENAI_API_KEY=your_openai_api_key
 ## 📸 Project Screenshots
 
 ### Home Page
-(Add Screenshot Here)
+<img width="1906" height="903" alt="image" src="https://github.com/user-attachments/assets/ed1d30c2-ec8b-4619-90ae-a587bff57913" />
+
 
 ### Chat Interface
-(Add Screenshot Here)
+<img width="1907" height="946" alt="image" src="https://github.com/user-attachments/assets/179cc190-abb9-4dcd-be5c-4c477432319b" />
+
 
 ### AI Response Generation
-(Add Screenshot Here)
+<img width="1907" height="946" alt="image" src="https://github.com/user-attachments/assets/71547b02-6326-44d8-a5e6-ea1120ad174b" />
 
-### Mobile Responsive View
-(Add Screenshot Here)
+### Delete Interface
+<img width="1900" height="955" alt="image" src="https://github.com/user-attachments/assets/5b280209-7e51-428f-863d-ca206fa2797e" />
+
 
 ---
 
