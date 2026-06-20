@@ -16,7 +16,7 @@ const Auth = ({ onLoginSuccess }) => {
     const endpoint = isLogin ? "/api/auth/login" : "/api/auth/signup";
     
     try {
-      const response = await fetch(`http://localhost:8080${endpoint}`, {
+      const response = await fetch(`https://conversaai-yvmt.onrender.com${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

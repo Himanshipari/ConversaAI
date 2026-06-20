@@ -5,6 +5,7 @@ import {v1 as uuidv1} from "uuid";
 import logo from "./assets/ChatGPT-Logo-scaled.png";
 
 function Sidebar(){
+  
     const {allThreads, setAllThreads, currThreadId, setNewChat, setPrompt, setReply, setCurrThreadId,setPrevChats} = useContext(MyContext);
 
     const getallThreads = async () =>{
@@ -19,9 +20,9 @@ function Sidebar(){
         }
     };
 
-    useEffect(()=>{
-        getallThreads();
-    }, [currThreadId])
+    // useEffect(()=>{
+    //     getallThreads();
+    // }, [currThreadId])
 
     const createNewChat = () =>{
         setNewChat(true);
@@ -34,7 +35,7 @@ function Sidebar(){
     const changeThread = async (newThreadId) =>{
         setCurrThreadId(newThreadId);
         try{
-            const response = await fetch(`http://localhost:8080/api/thread/${newThreadId}`);
+            const response = await fetch(`https://conversaai-yvmt.onrender.com${newThreadId}`);
             const res= await response.json();
             console.log(res);
             setPrevChats(res);
@@ -47,7 +48,7 @@ function Sidebar(){
 
     const deleteThread = async (threadId) =>{
         try{
-            const response = await fetch(`http://localhost:8080/api/thread/${threadId}`, {method:"DELETE"});
+            const response = await fetch(`https://conversaai-yvmt.onrender.com${threadId}`, {method:"DELETE"});
             const res= await response.json();
             console.log(res);
             setAllThreads(prev=> prev.filter(thread => thread.threadId !== threadId));
