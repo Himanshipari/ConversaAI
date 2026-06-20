@@ -263,7 +263,7 @@ function ChatWindow(){
 
         try {
             // यहाँ हमने बिल्कुल सही URL पाथ जोड़ दिया है ताकि एरर न आए
-           const response = await fetch("https://conversaai-yvmt.onrender.com", options);
+           const response = await fetch("/api/chat", options);
             const res = await response.json();
             console.log(res);
             setReply(res.reply);
