@@ -1,4 +1,4 @@
-.sidebar{
+/* .sidebar{
     background-color:#171717;
     color:#b4b4b4;
     height:100vh;
@@ -80,6 +80,119 @@ button:hover{
     border-radius: 10px;
 }
 
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e03131;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin: 15px auto;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  width: 85%;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.logout-btn:hover {
+  background-color: #c92a2a;
+}
+
+.logout-btn:active {
+  transform: scale(0.98);
+} */
+
+
+.sidebar{
+    background-color:#171717;
+    color:#b4b4b4;
+    height:100vh;
+    width:320px;
+    display:flex;
+    flex-direction:column;
+    box-sizing: border-box; /* पैडिंग को एडजस्ट करने के लिए */
+}
+
+button{
+    display:flex;
+    justify-content: space-between;
+    align-items: center; /* align-content को align-items किया */
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: solid 0.5px rgba(255,255,255,0.5);
+    cursor: pointer;
+    color: white; /* बटन का टेक्स्ट वाइट करने के लिए */
+}
+
+.logo{
+    height:25px;
+    width:25px;
+    background-color:#fff;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+button span{
+    font-size: 16px; /* फोंट साइज थोड़ा सही किया */
+}
+
+button:hover{
+    background-color: rgba(180,180,180,0.05);
+}
+
+.history{
+    margin:10px;
+    padding:0; /* पैडिंग 0 की */
+    flex-grow: 1; /* इसे पूरी खाली जगह देने के लिए height: 100% की जगह flex-grow किया */
+    overflow-y: auto; /* अगर बहुत सारी चैट्स हों तो स्क्रॉल आ जाए */
+    list-style: none;
+}
+
+.history li{
+    cursor:pointer;
+    padding: 10px 15px; /* पैडिंग सही की */
+    margin-bottom: 0.3rem;
+    font-size: 14px;
+    border: none; /* गड़बड़ करने वाला solid 10px border हटा दिया */
+    position:relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ececec !important; /* चैट नाम साफ़ दिखने के लिए */
+    border-radius: 8px;
+}
+
+.history li:hover, .highlighted{
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.sign{
+    padding: 10px;
+    margin: 10px;
+    font-size:14px;
+    text-align:center;
+    border-top: solid 0.25px rgba(255,255,255,0.5);
+}
+
+.fa-trash{
+    opacity:0;
+    cursor: pointer;
+}
+
+.history li:hover .fa-trash{
+    opacity:1;
+    color:#b4b4b4;
+}
+
+.fa-trash:hover{
+    color:#f87171 !important;
+}
 
 .logout-btn {
   display: flex;
