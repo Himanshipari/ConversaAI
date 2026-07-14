@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: Send Ping Requests
         run: |
-          curl -s https:conversaai-yvmt.onrender.com  > /dev/null \
-          curl -s https:airbnb-clone-mern-aizr.onrender.com  > /dev/null \
-          curl -s https:zerodha-frontend-2q4h.onrender.com > /dev/null \
+          curl -s https://conversaai-yvmt.onrender.com > /dev/null
+          curl -s https://airbnb-clone-mern-aizr.onrender.com > /dev/null
+          curl -s https://zerodha-frontend-2q4h.onrender.com > /dev/null
           curl -s https://zerodha-backend-nu2q.onrender.com > /dev/null
           echo "All services pinged successfully at $(date)"
