@@ -65,7 +65,8 @@ import { useState, useEffect } from "react";
 import { v1 as uuidv1 } from "uuid";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:8080");
+// const socket = io("http://localhost:8080");
+const socket = io();
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
